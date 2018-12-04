@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block body %}
+<h1>Pet Adoption Agency</h1>
+
+{% for pet in pets %}
+<ul>
+    {% if pet.photo_url %}
+    <img src="{{ pet.photo_url }}" alt="photo"> 
+    {% endif %}
+
+    <li> {{ pet.name }} {% if pet.available %}
+        <span> is <b>available!</b>
+      </span>{% endif %} </li>
+
+    
+</ul>
+{% endfor %}
+<a href="/add">Add A Pet</a>
+
+<h1>Random PetFinder Pet</h1>
+<div>
+    <div>Name: {{ randpet['name'] }}</div>
+    <div>Age: {{ randpet['age'] }}</div>
+    <div><img src="{{ randpet['photo_url'] }}" alt="Picture of {{ randpet['name'] }}"></div>
+</div>
+
+
+{% endblock %}
